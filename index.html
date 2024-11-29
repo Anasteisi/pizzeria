@@ -1,0 +1,419 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <title>Пиццерия</title>
+    <!-- Подключение CSS Bootstrap -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <!-- Подключение CSS файла -->
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/css/bootstrap-datepicker.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-timepicker/0.5.2/css/bootstrap-timepicker.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
+</head>
+
+<body>
+    <header>
+        <div class="header-content">
+            <div class="left-section">
+                <img src="logo.jpg" alt="Логотип">
+            </div>
+            <div class="middle-section">
+                <h1>Просто Пицца</h1>
+                <h3>Наш адрес: улица Ленина, д. 1</h3>
+                <h3>Часы работы: 9:00 — 23:00</h3>
+                <h3>Приём заказов: 9:00 — 22:00</h3>
+            </div>
+            <div class="right-section">
+                <div class="address">
+                    <p>Заказ по телефону:</p>
+                    <div class="contact-button-container">
+                        <a href="tel: 8127777777" class="contact-button">Позвонить: 777-7777</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div>
+            <!--<span id="order-count">0</span> Счётчик заказов -->
+            <span id="current-order-number">1</span> <!-- Номер текущего заказа -->
+        </div>
+        
+    </header>
+
+    <section id="about" class="about">
+        <h2>О нас</h2>
+        <p>Добро пожаловать в "Просто пицца" — уютное место, где простота и вкус идут рука об руку! Мы создали это
+            заведение с одной целью: сделать пиццу доступной и по-настоящему вкусной для всех. В нашем меню вы найдете
+            разнообразные блюда, которые порадуют как любителей классики, так и тех, кто ищет что-то новое и необычное.
+        </p>
+    </section>
+
+    <div class="main-container">
+        <nav>
+            <div id="tocart" class="nav-container">
+                <ul class="nav-list">
+                    <li><a href="#about" class="about-button">О нас</a></li>
+                    <li><a href="#contacts" class="contacts-button">Контакты</a></li>
+                    <li><a href="#feedback" class="contacts-button">Отзывы</a></li>
+                </ul>
+                <ul class="nav-list">
+                    <li><a href="#menu" class="menu-button">Меню</a></li>
+                </ul>
+                <ul class="nav-list">
+                    <li><a href="#pizzas" class="pizzas-button">Пиццы</a></li>
+                    <li><a href="#snacks" class="snacks-button">Закуски</a></li>
+                    <li><a href="#drinks" class="drinks-button">Напитки</a></li>
+                    <li><a href="#sauses" class="snacks-button">Соусы</a></li> 
+                </ul>
+            </div>
+        </nav>
+
+                <!-- Кнопка корзины -->
+        <button type="button" class="custom-button" id="cartButton" data-toggle="modal" data-target="#cartModal"></button>
+ 
+        <!-- Модальное окно корзины -->
+        <div class="modal fade" id="cartModal" tabindex="-1" role="dialog" aria-labelledby="cartModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="cartModalLabel">Корзина</h5>
+                    <!--    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button> кнопка закрытия корзины-->
+                    </div>
+                    <div class="modal-body">
+                        <ul id="cart"></ul>
+                        <div id="order-details-container" style="display: none;"> <!-- Скрываем контейнер по умолчанию -->
+                            <div class="pickup-container">
+
+                                <div class="pickup-input">
+                                    <label for="date-select">Выберите дату:</label>
+                                    <div class="input-group" id="date-select-group">
+                                        <select class="form-control" id="date-select">
+                                            <option value="" disabled selected>Выберите дату</option>
+                                            <option value="today">Сегодня</option>
+                                            <option value="tomorrow">Завтра</option>
+                                            <option value="day-after-tomorrow">Послезавтра</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                
+                                <div class="pickup-input">
+                                    <label for="time-select">Выберите время:</label>
+                                    <div class="input-group time" id="timepicker">
+                                        <select class="form-control" id="time-select">
+                                            <option value="" disabled selected>Выберите время</option>
+                                        </select>
+                                        <div class="input-group-append">
+                                            <span class="input-group-text">
+                                                <i class="fas fa-clock"></i>
+                                            </span>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                            </div>
+                            <div class="pickup-container">
+                                <div class="pickup-input">
+                                    <label for="customer-name">Имя:</label>
+                                    <input type="text" id="customer-name" required placeholder="Введите имя">
+                                </div>
+                                <div class="pickup-input">
+                                    <label for="customer-phone">Телефон:</label>
+                                    <input type="tel" id="customer-phone" required placeholder="Введите номер">
+                                </div>
+
+                            </div>
+                            <button type="button" class="cart-button" id="place-order" onclick="placeOrder()">Сделать предзаказ</button>
+                        </div>
+                    </div>
+                    
+                    <div class="modal-footer">
+                        <button type="button" class="cart-close-button" data-dismiss="modal">Закрыть</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <main>
+        <section id="menu" class="menu">
+            <h2>Меню</h2>
+            <section id="pizzas" class="pizzas">
+                <h2>Пиццы</h2>
+                <div class="pizza-container">
+                    <div class="pizza-item">
+                        <img src="Content/Pizza1.jpg" alt="Мексиканская" />
+                        <h3>Мексиканская</h3>
+                        <p>Состав: томатный соус, сыр моцарелла, пепперони, сыр чеддер.</p>
+                        <button type="button" class="order-button" onclick="addToCart('Мексиканская', 700)">Добавить в корзину</button>
+                    </div>
+                    <div class="pizza-item">
+                        <img src="Content/Pizza2.jpg" alt="Пикантная" />
+                        <h3>Пикантная</h3>
+                        <p>Состав: томатный соус, сыр чеддер, сыр пармезан, чоризо.</p>
+                        <button type="button" class="order-button" onclick="addToCart('Пикантная', 700)">Добавить в корзину</button>
+                    </div>
+                    <div class="pizza-item">
+                        <img src="Content/Pizza3.jpg" alt="Охотничья" />
+                        <h3>Охотничья</h3>
+                        <p>Состав: томатный соус, сыр моцарелла, колбаски охотничьи, базилик.</p>
+                        <button type="button" class="order-button" onclick="addToCart('Охотничья', 700)">Добавить в корзину</button>
+                    </div>
+                    <div class="pizza-item">
+                        <img src="Content/Pizza4.jpg" alt="Овощная" />
+                        <h3>Овощная</h3>
+                        <p>Состав: томатный соус, сыр моцарелла, сыр чеддер, баклажаны.</p>
+                        <button type="button" class="order-button" onclick="addToCart('Овощная', 600)">Добавить в корзину</button>
+                    </div>
+                    <div class="pizza-item">
+                        <img src="Content/Pizza5.jpg" alt="Томатная" />
+                        <h3>Томатная</h3>
+                        <p>Состав: томатный соус, сыр моцарелла, томаты свежие.</p>
+                        <button type="button" class="order-button" onclick="addToCart('Томатная', 600)">Добавить в корзину</button>
+                    </div>
+                    <div class="pizza-item">
+                        <img src="Content/Pizza6.jpg" alt="Сырно-томатная" />
+                        <h3>Сырно-томатная</h3>
+                        <p>Состав: томатный соус, сыр моцарелла, сыр чеддер, томаты свежие.</p>
+                        <button type="button" class="order-button" onclick="addToCart('Сырно-томатная', 650)">Добавить в корзину</button>
+                    </div>
+                    <div class="pizza-item">
+                        <img src="Content/Pizza7.jpg" alt="Беконная" />
+                        <h3>Беконная</h3>
+                        <p>Состав: томатный соус, сыр моцарелла, бекон.</p>
+                        <button type="button" class="order-button" onclick="addToCart('Беконная', 750)">Добавить в корзину</button>
+                    </div>
+                    <div class="pizza-item">
+                        <img src="Content/Pizza8.jpg" alt="Пепперони" />
+                        <h3>Пепперони</h3>
+                        <p>Состав: томатный соус, сыр моцарелла, пепперони.</p>
+                        <button type="button" class="order-button" onclick="addToCart('Пепперони', 700)">Добавить в корзину</button>
+                    </div>
+                    <div class="pizza-item">
+                        <img src="Content/Pizza9.jpg" alt="Острая" />
+                        <h3>Острая</h3>
+                        <p>Состав: соус чили, сыр моцарелла, чоризо.</p>
+                        <button type="button" class="order-button" onclick="addToCart('Острая', 750)">Добавить в корзину</button>
+                    </div>
+                    <div class="pizza-item">
+                        <img src="Content/Pizza10.jpg" alt="Салями" />
+                        <h3>Салями</h3>
+                        <p>Состав: томатный соус, сыр моцарелла, сыр чеддер, салями.</p>
+                        <button type="button" class="order-button" onclick="addToCart('Салями', 700)">Добавить в корзину</button>
+                    </div>
+                    <div class="pizza-item">
+                        <img src="Content/Pizza11.jpg" alt="Овощная" />
+                        <h3>Овощная</h3>
+                        <p>Состав: томатный соус, сыр моцарелла, томаты, перец болгарский, красный лук, оливки, базилик.</p>
+                        <button type="button" class="order-button" onclick="addToCart('Овощная', 500)">Добавить в корзину</button>
+                    </div>
+                    <div class="pizza-item">
+                        <img src="Content/Pizza12.jpg" alt="Болоньезе" />
+                        <h3>Болоньезе</h3>
+                        <p>Состав: томатный соус, сыр моцарелла, фарш говяжий, бекон, базилик.</p>
+                        <button type="button" class="order-button" onclick="addToCart('Болоньезе', 700)">Добавить в корзину</button>
+                    </div>
+                    <div class="pizza-item">
+                        <img src="Content/Pizza13.jpg" alt="Сочная" />
+                        <h3>Сочная</h3>
+                        <p>Состав: томатный соус, сыр моцарелла, томаты, красный лук, бекон, базилик.</p>
+                        <button type="button" class="order-button" onclick="addToCart('Сочная', 700)">Добавить в корзину</button>
+                    </div>
+                    <div class="pizza-item">
+                        <img src="Content/Pizza14.jpg" alt="Окрошка" />
+                        <h3>Окрошка</h3>
+                        <p>Состав: томатный соус, сыр чеддер, сыр моцарелла, томаты, ветчина, редис, базилик.</p>
+                        <button type="button" class="order-button" onclick="addToCart('Окрошка', 700)">Добавить в корзину</button>
+                    </div>
+                    <div class="pizza-item">
+                        <img src="Content/Pizza15.jpg" alt="Грибная" />
+                        <h3>Грибная</h3>
+                        <p>Состав: томатный соус, сыр моцарелла, шампиньоны, томаты, базилик.</p>
+                        <button type="button" class="order-button" onclick="addToCart('Грибная', 500)">Добавить в корзину</button>
+                    </div>
+                    <div class="pizza-item">
+                        <img src="Content/Pizza16.jpg" alt="Зимняя" />
+                        <h3>Зимняя</h3>
+                        <p>Состав: томатный соус, сыр моцарелла, чоризо, красный лук, базилик.</p>
+                        <button type="button" class="order-button" onclick="addToCart('Зимняя', 550)">Добавить в корзину</button>
+                    </div>
+                </div>
+            </section>
+
+            <section id="snacks" class="snacks">
+                <h2>Закуски</h2>
+                <div class="pizza-container">
+                    <div class="pizza-item">
+                        <img src="Content/Snack1.jpg" alt="Картофель фри" />
+                        <h3>Картофель фри</h3>
+                        <p>Состав: картофель, масло растительное, соль, специи.</p>
+                        <button type="button" class="order-button" onclick="addToCart('Картофель фри', 150)">Добавить в корзину</button>
+                    </div>
+                    <div class="pizza-item">
+                        <img src="Content/Snack2.jpg" alt="Картофель по-деревенски" />
+                        <h3>Картофель по-деревенски</h3>
+                        <p>Состав: картофель, масло растительное, соль, специи.</p>
+                        <button type="button" class="order-button" onclick="addToCart('Картофель по-деревенски', 200)">Добавить в корзину</button>
+                    </div>
+                    <div class="pizza-item">
+                        <img src="Content/Snack3.jpg" alt="Крылышки барбекю" />
+                        <h3>Крылышки барбекю</h3>
+                        <p>Состав: крылышки куриные, соус барбекю, лимон, масло растительное, соль, специи.</p>
+                        <button type="button" class="order-button" onclick="addToCart('Крылышки барбекю', 500)">Добавить в корзину</button>
+                    </div>
+                    <div class="pizza-item">
+                        <img src="Content/Snack4.jpg" alt="Овощи свежие" />
+                        <h3>Овощи свежие</h3>
+                        <p>Состав: перец болгарский, морковь, огурец, брокколи.</p>
+                        <button type="button" class="order-button" onclick="addToCart('Овощи свежие', 300)">Добавить в корзину</button>
+                    </div>
+                </div>
+            </section>
+
+            <section id="drinks" class="drinks">
+                <h2>Напитки</h2>
+                <div class="pizza-container">
+                    <div class="pizza-item">
+                        <img src="Content/Cold1.jpg" alt="Кола" />
+                        <h3>Кола</h3>
+                        <button type="button" class="order-button" onclick="addToCart('Кола', 100)">Добавить в корзину</button>
+                    </div>
+                    <div class="pizza-item">
+                        <img src="Content/Cold2.jpg" alt="Сок апельсиновый" />
+                        <h3>Сок апельсиновый</h3>
+                        <button type="button" class="order-button" onclick="addToCart('Сок апельсиновый', 150)">Добавить в корзину</button>
+                    </div>
+                    <div class="pizza-item">
+                        <img src="Content/Cold3.jpg" alt="Морс клюквенный" />
+                        <h3>Морс клюквенный</h3>
+                        <button type="button" class="order-button" onclick="addToCart('Морс клюквенный', 150)">Добавить в корзину</button>
+                    </div>
+                    <div class="pizza-item">
+                        <img src="Content/Cold4.jpg" alt="Компот из сухофруктов" />
+                        <h3>Компот из сухофруктов</h3>
+                        <button type="button" class="order-button" onclick="addToCart('Компот из сухофруктов', 150)">Добавить в корзину</button>
+                    </div>
+                    <div class="pizza-item">
+                        <img src="Content/Hot1.jpg" alt="Американо" />
+                        <h3>Американо</h3>
+                        <button type="button" class="order-button" onclick="addToCart('Американо', 100)">Добавить в корзину</button>
+                    </div>
+                    <div class="pizza-item">
+                        <img src="Content/Hot2.jpg" alt="Капучино" />
+                        <h3>Капучино</h3>
+                        <button type="button" class="order-button" onclick="addToCart('Капучино', 150)">Добавить в корзину</button>
+                    </div>
+                    <div class="pizza-item">
+                        <img src="Content/Hot3.jpg" alt="Чай чёрный" />
+                        <h3>Чай чёрный</h3>
+                        <button type="button" class="order-button" onclick="addToCart('Чай чёрный', 150)">Добавить в корзину</button>
+                    </div>
+                    <div class="pizza-item">
+                        <img src="Content/Hot4.jpg" alt="Чай фруктовый" />
+                        <h3>Чай фруктовый</h3>
+                        <button type="button" class="order-button" onclick="addToCart('Чай фруктовый', 100)">Добавить в корзину</button>
+                    </div>
+                    <div class="pizza-item">
+                        <img src="Content/Hot5.jpg" alt="Чай фруктовый" />
+                        <h3>Чай фруктовый</h3>
+                        <button type="button" class="order-button" onclick="addToCart('Чай фруктовый', 100)">Добавить в корзину</button>
+                    </div>
+                </div>
+            </section>
+
+            <section id="sauses" class="sauses">
+                <h2>Соусы</h2>
+                <div class="pizza-container">
+                    <div class="pizza-item">
+                        <img src="Content/Sause1.jpg" alt="Томатный" />
+                        <h3>Томатный</h3>
+                        <button type="button" class="order-button" onclick="addToCart('Томатный', 50)">Добавить в корзину</button>
+                    </div>
+                    <div class="pizza-item">
+                        <img src="Content/Sause2.jpg" alt="Сырный" />
+                        <h3>Сырный</h3>
+                        <button type="button" class="order-button" onclick="addToCart('Сырный', 50)">Добавить в корзину</button>
+                    </div>
+                    <div class="pizza-item">
+                        <img src="Content/Sause3.jpg" alt="Аджика" />
+                        <h3>Аджика</h3>
+                        <button type="button" class="order-button" onclick="addToCart('Аджика', 50)">Добавить в корзину</button>
+                    </div>
+                    <div class="pizza-item">
+                        <img src="Content/Sause4.jpg" alt="Острый" />
+                        <h3>Острый</h3>
+                        <button type="button" class="order-button" onclick="addToCart('Острый', 50)">Добавить в корзину</button>
+                    </div>
+                    <div class="pizza-item">
+                        <img src="Content/Sause5.jpg" alt="Песто" />
+                        <h3>Песто</h3>
+                        <button type="button" class="order-button" onclick="addToCart('Песто', 50)">Добавить в корзину</button>
+                    </div>
+                </div>
+            </section>
+
+        </section>
+    </main>
+
+        <!-- Плавающая кнопка корзины -->
+    <button type="button" class="to-cart" id="cartButton" data-toggle="modal" data-target="#cartModal"></button>
+
+    <section id="feedback" class="about">
+        <div class="feedback-container">
+            <h2>Отзывы</h2>
+            <div id="feedback-list">
+                <div class="feedback-item">
+                    <h3>Алексей</h3>
+                    <p>Отличная пицца! Я заказал "Овощную" и был приятно удивлен вкусовым сочетанием. Рекомендую!</p>
+                </div>
+                <div class="feedback-item">
+                    <h3>Ольга</h3>
+                    <p>Вчера мы с друзьями посетили это место и заказали несколько пицц. Вкусно, но цены высоковаты.</p>
+                </div>
+                <div class="feedback-item">
+                    <h3>Иван</h3>
+                    <p>Я люблю это место! Пицца всегда свежая и вкусная. Рекомендую заказывать "Маргариту"!</p>
+                </div>
+                <div class="feedback-item">
+                    <h3>Наталья</h3>
+                    <p>Мне понравилась атмосфера в ресторане. Пицца была вкусной, но сервис довольно медленный.</p>
+                </div>
+                <div class="feedback-item">
+                    <h3>Мария</h3>
+                    <p>Вчера мы с семьей посетили это место и заказали несколько блюд. Пицца была вкусной, но салат немного пресный.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer id="contacts" class="footer">
+        <h2>Контакты</h2>
+        <p>Телефон: 777-77-77</p>
+        <p>Социальные сети:
+            <a href="https://www.vk.com/prostopizza" target="_blank">VK</a>,
+            <a href="https://www.instagram.com/prostopizza" target="_blank">Instagram</a>
+        </p>
+        <p>Адрес: ул. Ленина, д. 1</p>
+    </footer>
+
+    <!-- Подключение jQuery (необходим для некоторых компонентов Bootstrap) -->
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <!-- Подключение JavaScript Bootstrap -->
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.bundle.min.js"></script>
+    <!-- Подключение JS файла -->
+    <script src="script.js"></script>
+
+    <!-- Подключение скриптов -->
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/js/bootstrap-datepicker.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-timepicker/0.5.2/js/bootstrap-timepicker.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"></script>
+
+</body>
+</html>

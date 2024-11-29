@@ -1,0 +1,994 @@
+/* Основные стили для тела страницы */
+body {
+    font-family: 'Gothic', sans-serif;
+    margin: 0;
+    padding: 0;
+    background: linear-gradient(to bottom right, rgb(135, 135, 135), rgb(173, 173, 173), rgb(107, 107, 107), rgb(82, 82, 82));
+    /*background: linear-gradient(135deg, #b1b1b1, #383838);/* Общий фон */
+    overflow-x: hidden;
+    color: rgb(32, 32, 32); /* Цвет текста */
+}
+
+*, *::before, *::after {
+    box-sizing: border-box;
+}
+
+:root {
+    --color-green: #002e02; /* Зеленый цвет */
+    --color-dark-green: #001b01; /* Темный зеленый */
+    --color-red: #680701; /* Красный цвет */
+    --color-dark-red: #350101; /* Темный красный */
+    --color-orange: #af4f00; /* Оранжевый цвет */
+    --color-dark-orange: #703002; /* Темный оранжевый */
+    --color-cart: #d06f00c0; /* Цвет корзины */
+}
+
+/* Шапка */
+header {
+    display: flex;
+    height: 180px; /* Увеличенная высота шапки */
+}
+
+/* Основной контейнер */
+.main-container {
+    display: flex; /* Используем Flexbox для размещения элементов рядом */
+    flex-direction: row; /* Элементы располагаются в строку */
+    align-items: center; /* Выравнивание по центру */
+    margin-left: 50px;
+    margin-right: 50px;
+}
+
+/* Логотип */
+.left-section {
+    flex: 1; /* Логотип */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.left-section img {
+    max-width: 100%;
+    height: auto;
+    width: 150px;
+}
+
+/* Секции заголовка */
+.header-content {
+    display: flex;
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.middle-section {
+    flex: 2; /* Секция для заголовка */
+    flex-direction: column; /* Текст заголовка в столбик */
+    display: flex;
+    align-items: center; /* Центрирование содержимого */
+    justify-content: center; /* Центрирование содержимого */
+}
+
+.middle-section h1,
+.middle-section h2,
+.middle-section h3 {
+    margin: 0;
+    text-align: center;
+    line-height: 1; /* Уменьшение расстояния между строчками */
+}
+
+.middle-section h1 {
+    line-height: 1.2; /* Межстрочный интервал в 1.2 раза больше размера шрифта */
+    font-size: 3rem;
+}
+
+.middle-section h2 {
+    line-height: 1.2; /* Межстрочный интервал в 1.5 раза больше размера шрифта */
+    font-size: 2rem; /* Размер шрифта для h2 */
+}
+
+.middle-section h3 {
+    line-height: 1.2; /* Межстрочный интервал в 1.5 раза больше размера шрифта */
+    font-size: 1.5rem; /* Размер шрифта для h3 */
+}
+
+.right-section {
+    flex: 1; /* Секция для адреса */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.right-section .address {
+    text-align: center;
+    margin: 0;
+    font-size: 1.4rem; /* Уменьшенный размер шрифта */
+    line-height: 1.5; /* Уменьшение расстояния между строчками */
+  /*  margin-bottom: 30px; */
+}
+
+/* Навигация */
+nav {
+    width: 67%; /* Ширина навигации 67% */
+    padding: 20px; /* Отступы внутри навигации */
+    margin: 0px auto; /* Отступ сверху и центрирование по горизонтали */
+}
+
+/* Контейнер для списков навигации */
+.nav-container {
+    display: flex; /* Используем flex для размещения списков рядом */
+    justify-content: space-around; /* Распределяем списки по горизонтали */
+}
+
+/* Список навигации */
+.nav-list {
+    display: flex; /* Используем flex для размещения элементов */
+    flex-direction: column; /* Вертикальное расположение элементов списка */
+    justify-content: center; /* Центрируем элементы по вертикали */
+    align-items: center; /* Центрируем элементы по горизонтали */
+    list-style-type: none; /* Убираем маркеры списка */
+    padding: 0px; /* Убираем отступы */
+    margin: 0px; /* Убираем отступы */
+    margin-right: 50px; /* Отступ справа для разделения списков */
+}
+
+/* Элементы списка навигации */
+.nav-list li {
+    /*margin: 5px; /* Отступы */
+    box-sizing: border-box; /* Учитываем отступы и границы в ширине */
+    padding: 5px; /* Добавляем отступы для элементов */
+    text-align: center; /* Центрируем текст внутри элемента списка */
+}
+
+/* Стили для ссылок в меню */
+.nav-list li a {
+    text-decoration: none; /* Убираем подчеркивание ссылок */
+    transition: background-color 0.3s; /* Плавный переход для эффекта наведения */
+}
+
+/* Эффект наведения на кнопки */
+.nav-list li a:hover {
+    background-color: var(--color-dark-green); /* Цвет кнопок при наведении */
+    color: white; /* Цвет текста ссылок */
+}
+
+.about-button, 
+.contacts-button {
+    display: inline-block;
+    padding: 15px 25px; /* Отступы внутри кнопки */
+    font-size: 18px; /* Размер шрифта */
+    color: white; /* Цвет текста */
+    background: linear-gradient(180deg, #707070, #434343); /* Фон сектора */
+    border: none; /* Убираем границу */
+    border-radius: 50px; /* Скругляем углы */
+    text-decoration: none; /* Убираем подчеркивание текста */
+    transition: background-color 0.3s; /* Плавный переход цвета фона */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); /* Тень */
+}
+
+.about-button:hover, 
+.contacts-button:hover {
+    background: linear-gradient(180deg, #434343, #202020); /* Фон сектора */
+}
+
+/* Кнопка меню */
+.menu-button {
+    background: radial-gradient(circle at center, var(--color-orange), var(--color-dark-orange) 70%);
+    border: 5px solid var(--color-dark-green);
+    border-radius: 90%;
+    color: white;
+    font-size: 3em;
+    padding: 20px;
+    width: 300px;
+    height: 300px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.7);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background-color 0.3s; /* Плавный переход для эффекта наведения */
+}
+
+@keyframes scaleAnimation {
+    0% {
+        transform: scale(1);
+    }
+    100% {
+        transform: scale(1.2);
+    }
+}
+/* Эффект наведения для кнопки меню */
+.menu-button:hover {
+    animation: scaleAnimation 0.3s ease forwards; /* Применение анимации при наведении */
+    color: white; /* Цвет текста ссылок */
+    background: radial-gradient(circle at center, var(--color-green), var(--color-dark-green) 70%);
+    border: 7px solid var(--color-dark-green);
+}
+
+/* Кнопки меню */
+.pizzas-button {
+    background: linear-gradient(180deg, #707070, #434343); /* Фон сектора */
+    border: 3px solid var(--color-dark-green); /* Цвет рамки */
+    /*background-color: var(--color-orange); /* Яркий цвет фона */
+    border-radius: 45px; /* Скругляем углы */
+    color: white; /* Цвет текста ссылок */
+    font-size: 2.2em; /* Увеличенный размер шрифта */
+    padding: 20px 100px; /* Отступы для создания размера кнопки */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.7); /* Тень */
+    transition: background-color 0.3s; /* Плавный переход для эффекта наведения */
+    display: flex; /* Используем flex для центрирования текста */
+    align-items: center; /* Центрируем текст по вертикали */
+    justify-content: center; /* Центрируем текст по горизонтали */
+}
+
+/* Кнопки меню */
+.snacks-button, .drinks-button {
+    background: linear-gradient(180deg, #707070, #434343); /* Фон сектора */
+    border: 3px solid var(--color-dark-green); /* Цвет рамки */
+    border-radius: 45px; /* Скругляем углы */
+    color: white; /* Цвет текста ссылок */
+    font-size: 1.2em; /* Увеличенный размер шрифта */
+    padding: 10px 100px; /* Отступы для создания размера кнопки */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.7); /* Тень */
+    /*background-color: var(--color-orange); /* Яркий цвет фона */
+    transition: background-color 0.3s; /* Плавный переход для эффекта наведения */
+    display: flex; /* Используем flex для центрирования текста */
+    align-items: center; /* Центрируем текст по вертикали */
+    justify-content: center; /* Центрируем текст по горизонтали */
+}
+
+/* Эффект наведения для кнопки меню */
+.pizzas-button:hover, 
+.snacks-button:hover, 
+.drinks-button:hover {
+    color: white; /* Цвет текста ссылок */
+    background: radial-gradient(circle at center, var(--color-green), var(--color-dark-green) 70%); /* Фон сектора */
+    border: 3px solid var(--color-dark-green); /* Цвет рамки */
+    transform: scale(1.1); /*увеличенный размер кнопки*/
+}
+
+/* Стили для секции корзины */
+.cart-section {
+    flex: None; /* Корзина занимает 50% высоты родительского контейнера */
+    padding: 15px; /* Уменьшенные отступы внутри секции корзины */
+    margin-top: 30px; /* Отступ сверху */
+    width: 500px; /* Ширина корзины*/
+    border-radius: 90px; /* Скругление углов корзины */
+    text-align: center; /* Центрируем текст в секции */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3); /* Тень для секции */
+    margin-right: 50px; /* Отступ справа */
+    background: linear-gradient(180deg, #707070, #434343); /* Фон сектора */
+    border: 5px solid var(--color-dark-orange); /* Цвет рамки */
+    /*background-color: var(--color-cart); /* Цвет секции */
+}
+
+/* Заголовок секции корзины */
+.cart-section h2 {
+    margin: 0 0 10px 0; /* Отступы для заголовка */
+    text-align: center; /* Центрируем заголовок */
+    font-size: 2em; /* Увеличенный размер шрифта */
+}
+
+/* Список товаров в корзине */
+#cart {
+    list-style-type: none; /* Убираем маркеры списка */
+    padding: 0; /* Убираем внутренние отступы */
+    font-size: 20px;
+    /*text-align: justify;*/
+    text-align: left;
+    justify-content: space-around; /* Центрируем текст по горизонтали */
+    padding: 0; /* Убираем отступы */
+    margin: 0; /* Убираем отступы */
+}
+
+/*#cart li {
+    margin: 10px 0; /* Отступы между элементами списка */
+ /* text-align: left; /* Выравнивание текста по левому краю */
+/*}*/
+
+/* Кнопки добавить в корзину и сделать предзаказ в корзине */
+.order-button, .cart-button {
+    background: linear-gradient(180deg, #707070, #434343); /* Фон сектора */
+    border: 3px solid var(--color-dark-green); /* Цвет рамки */
+    color: rgb(255, 255, 255); /* Цвет текста кнопок */
+    border-radius: 45px; /* Скругление углов кнопок */
+    padding: 15px 10px; /* Отступы внутри кнопок */
+    cursor: pointer; /* Указатель при наведении */
+    font-size: 20px; /* Размер шрифта */
+    margin-top: 10px; /* Отступ сверху */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3); /* Тень для кнопок */
+    display: block; /* Делаем кнопки блочными для центрирования */
+    width: 80%; /* Задаем ширину кнопок для центрирования */
+    margin-left: auto; /* Центрируем кнопки */
+    margin-right: auto; /* Центрируем кнопки */
+    transition: background-color 0.3s; /* Плавный переход для эффекта наведения */
+    justify-content: flex-end; /* выравнивание по нижнему краю */
+}
+
+/* Эффект наведения на кнопки */
+.order-button:hover, .cart-button:hover {
+    background: radial-gradient(circle at center, var(--color-green), var(--color-dark-green) 70%); /* Фон сектора */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); /* Тень */
+    border: 3px solid var(--color-dark-green); /* Цвет рамки */
+    transform: scale(1.1); /*увеличенный размер кнопки*/
+}
+
+.order-button:focus,
+.cart-button:focus {
+    border-color: none; /* Цвет рамки при фокусе */
+    outline: none; /* Убираем стандартный контур */
+}
+
+/* Стили для подвала */
+.footer {
+    height: 300px; /* Высота подвала */
+    padding: 40px 20px; /* Отступы внутри подвала */
+    text-align: center; /* Центрируем текст */
+    color: rgb(34, 34, 34); /* Цвет текста */
+}
+
+/* Стили для секций "О нас" и "Меню" */
+.about, .menu, .pizzas, .snacks, .drinks {
+    /*flex: 2; /* Блок навигации занимает 1/2 экрана */
+    font-size: 1.2rem; /* Устанавливаем размер шрифта */
+    padding: 0px; /* Отступы внутри секций от краёв */
+    margin-left: 50px; /* Отступы снаружи секций от краёв */
+    margin-right: 50px; /* Отступы снаружи секций от краёв */
+}
+
+/* Стили для заголовков */
+.about h2, .menu h2 {
+    text-align: center; /* Центрируем заголовок */
+    padding: 10px; /* Отступы */
+    margin: 0px; /* Убираем отступы */
+}
+
+/* Стили для параграфов */
+.about p, .menu p {
+    text-align: justify; /* Выравнивание текста по ширине */
+    font-size: 1rem; /* Устанавливаем размер шрифта */
+ /*   line-height: 1.5; /* Межстрочный интервал в 1.5 раза больше размера шрифта */
+}
+
+/* Контейнер для пиццы */
+.pizza-container {
+    display: flex; /* Используем флекс-контейнер */
+    flex-wrap: wrap; /* Позволяем элементам переноситься на новую строку */
+    justify-content: space-around; /* Распределяем элементы по контейнеру */
+}
+
+/* Элементы пиццы */
+.pizza-item {
+    display: flex; /* Используем Flexbox */
+    flex-direction: column; /* Элементы располагаются вертикально */
+    justify-content: space-between; /* Распределяем пространство между элементами */
+    width: calc(22%); /* Ширина элемента с учетом отступов */
+    margin: 10px; /* Отступы между элементами */
+    align-items: center; /* Центрируем элементы по горизонтали */
+    text-align: center; /* Выравнивание текста по центру */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); /* Тень для секции */
+    border-radius: 45px; /* Скругление углов */
+    padding: 10px; /* Отступы внутри */
+    font-size: 20px; /* Размер шрифта */
+    background: linear-gradient(180deg, #a9a9a9, #747474); /* Фон сектора */
+}
+
+/* Изображения пиццы */
+.pizza-item img {
+    max-width: 100%; /* Изображение адаптивное */
+    height: auto; /* Сохраняем пропорции изображения */
+    margin: 10px; /* Отступ между изображением и заголовком */
+}
+
+/* Заголовок */
+.pizza-item h3 {
+    margin: 10px 0; /* Отступ между заголовком и описанием */
+}
+
+/* Описание */
+.pizza-item p {
+    margin: 0px 0; /* Отступ между описанием и кнопкой */
+   /* min-height: 100px; /* Минимальная высота для описания, чтобы обеспечить одинаковое расстояние */
+    text-align: center; /* Выравнивание текста по центру */
+}
+
+.order-button {
+    margin-top: 10px; /* Фиксированный отступ между описанием и кнопкой */
+}
+
+/* Общий стиль для кнопок по умолчанию */
+button {
+    background-color: #0f045e; /* Фон */
+    border: black; /* Чёрная рамка */
+    color: black; /* Чёрный цвет текста */
+    padding: 10px 15px; /* Внутренние отступы */
+    text-align: center; /* Центрирование текста */
+    text-decoration: none; /* Убираем подчеркивание */
+    display: inline-block; /* Отображение в строку */
+    font-size: 16px; /* Размер шрифта */
+    margin: 4px 2px; /* Отступы между кнопками */
+    cursor: pointer; /* Указатель при наведении */
+    border-radius: 45px; /* Закругленные углы */
+    transition: background-color 0.3s; /* Плавный переход цвета фона */
+}
+
+/* Стиль для кнопки очистки корзины */
+button.clear-cart {
+    background: linear-gradient(180deg, #707070, #434343); /* Фон сектора */
+    border: 3px solid var(--color-dark-orange); /* Цвет рамки */
+    color: white; /* Белый цвет текста */
+    padding: 10px 40px; /* Внутренние отступы */
+    text-align: center; /* Центрирование текста */
+    text-decoration: none; /* Убираем подчеркивание */
+    display: inline-block; /* Отображение в строку */
+    font-size: 15px; /* Размер шрифта */
+    cursor: pointer; /* Указатель при наведении */
+    border-radius: 20px; /* Закругленные углы */
+    transition: background-color 0.3s; /* Плавный переход цвета фона */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); /* Тень */
+}
+
+/* Эффект при наведении на кнопку очистки */
+button.clear-cart:hover {
+    background: radial-gradient(circle at center, var(--color-orange), var(--color-dark-orange) 70%); /* Фон сектора */
+    border: 3px solid var(--color-dark-orange); /* Цвет рамки */
+}
+
+button.clear-cart:focus {
+    border-color: none; /* Цвет рамки при фокусе */
+    outline: none; /* Убираем стандартный контур */
+}
+
+
+a {
+    color: black; /* Задаем черный цвет для ссылок */
+    text-decoration: none; /* Убираем подчеркивание */
+}
+
+.total-price {
+    font-size: 1.8rem; /* Увеличиваем размер шрифта */
+    font-weight: bold; /* Делаем текст жирным */
+    margin-top: 20px; /* Увеличиваем отступ сверху для большего пространства */
+    margin-bottom: 10px; /* Увеличиваем отступ снизу, если необходимо */
+}
+
+.pickup-container {
+    display: flex; /* Используем flexbox для размещения элементов */
+    flex-direction: row; /* Горизонтальное размещение */
+    align-items: flex-end; /* Выравниваем элементы по нижнему краю */
+    justify-content: space-between; /* Распределяем по горизонтали*/
+    margin-top: 0px; /* Перемещает контейнер вниз */
+    padding: 0px; /* Добавьте отступы для лучшего внешнего вида */
+}
+
+.pickup-input {
+    display: flex; /* Включаем flexbox для вертикального размещения */
+    margin: 0px; /* Отступы между элементами */
+    padding: 5px; /* Внутренние отступы */
+    border: none; /* Рамка */
+    font-size: 15px; /* Размер шрифта */
+    flex-direction: column; /* Вертикальное размещение */
+    width: 45%; /* Ширина 45% от родительского контейнера */
+}
+
+/* Стили для label */
+label {
+    display: block; /* Заставляем метки занимать всю ширину */
+    margin-bottom: 10px; /* Отступ снизу, чтобы отделить от поля ввода */
+    font-size: 18px; /* Размер шрифта для label */
+    color: #000000; /* Цвет текста */
+    /*color: white;
+    display: block; /* Заставляем метки занимать всю ширину */
+    font-weight: bold; /* Жирный шрифт */
+    /*font-weight: bold; /* Сделать текст жирным, если нужно */
+    /*font-family: 'Arial', sans-serif; /* Шрифт для label */
+}
+
+/* Поля ввода имя телефон */
+select, input {
+   /* font-family: 'Arial', sans-serif; /* Установите одинаковый шрифт */
+    color: #000000; /* Цвет текста */
+    background-color:  white; /* Цвет фона */
+    border: none;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.7); /* Тень */
+    border-radius: 45px; /* Закругленные углы */
+    padding: 10px; /* Внутренние отступы */
+    font-size: 20px; /* Размер шрифта */
+    width: auto; /* Убираем фиксированную ширину */
+    min-width: 150px; /* Минимальная ширина для кнопки */
+    appearance: none; /* Убираем стандартный стиль браузера для select */
+    text-align: center; /* Центрируем текст внутри select */
+    appearance: none; /* Убираем стандартный стиль браузера для select */
+    min-width: 150px; /* Минимальная ширина */
+}
+
+/* Дополнительно можно добавить стиль для контейнера, если необходимо 
+.pickup-input {
+    margin-bottom: 15px; /* Отступ между элементами 
+}*/
+
+/* Стили для фокуса */
+#date-select:focus,
+#time-select:focus {
+    border-color: none; /* Цвет рамки при фокусе */
+    outline: none; /* Убираем стандартный контур */
+}
+
+.quantity-controls {
+    display: flex;
+    flex-direction: column; /* Выстраиваем кнопки в столбик */
+    align-items: center; /* Центрируем кнопки по горизонтали */
+}
+
+.clear-cart {
+    margin-top: 10px; /* Увеличьте значение для большего пространства */
+}
+
+.total {
+    font-size: 24px; /* Увеличьте размер шрифта по вашему усмотрению */
+    font-weight: bold; /* Сделать текст жирным, если нужно */
+}
+
+/* Кнопки увеличения и уменьшения количества */
+.quantity-controls {
+    display: flex;
+    flex-direction: row; /* Горизонтальное расположение */
+    align-items: center; /* Центрируем кнопки по вертикали */
+    justify-content: flex-end; /* Смещаем кнопки вправо */
+    margin-top: 10px; /* Отступ сверху */
+}
+
+/* Кнопка увеличения количества */
+button.increase-button {
+    background: linear-gradient(180deg, #707070, #434343); /* Фон сектора */
+    border: 3px solid var(--color-dark-green); /* Цвет рамки */
+    color: white; /* Белый цвет текста */
+    padding: 5px 20px; /* Отступы внутри кнопки */
+    border-radius: 20px; /* Закругленные углы */
+    cursor: pointer; /* Указатель при наведении */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); /* Тень */
+    transition: background-color 0.3s; /* Плавный переход цвета фона */
+    margin-left: 10px; /* Отступ слева для кнопки "плюс" */
+}
+
+/* Эффект при наведении на кнопку увеличения */
+button.increase-button:hover {
+    background: radial-gradient(circle at center, var(--color-green), var(--color-dark-green) 70%); /* Фон сектора */
+    border: 3px solid var(--color-dark-green); /* Цвет рамки */
+}
+
+/* Кнопка уменьшения количества */
+button.decrease-button {
+    background: linear-gradient(180deg, #707070, #434343); /* Фон сектора */
+    border: 3px solid var(--color-dark-red); /* Цвет рамки */
+    color: white; /* Белый цвет текста */
+    padding: 5px 20px; /* Отступы внутри кнопки */
+    border-radius: 20px; /* Закругленные углы */
+    cursor: pointer; /* Указатель при наведении */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); /* Тень */
+    transition: background-color 0.3s; /* Плавный переход цвета фона */
+}
+
+/* Эффект при наведении на кнопку уменьшения */
+button.decrease-button:hover {
+    background: radial-gradient(circle at center, var(--color-red), var(--color-dark-red) 70%); /* Фон сектора */
+    border: 3px solid var(--color-dark-red); /* Цвет рамки */
+}
+
+/*Кнопка для номера телефона в шапке*/
+.contact-button-container {
+    text-align: center; /* Центрируем текст */
+}
+
+.contact-button {
+    display: inline-block;
+    padding: 15px 25px; /* Отступы внутри кнопки */
+    font-size: 18px; /* Размер шрифта */
+    color: white; /* Цвет текста */
+    background: linear-gradient(180deg, #707070, #434343); /* Фон сектора */
+    border: none; /* Убираем границу */
+    border-radius: 50px; /* Скругляем углы */
+    text-decoration: none; /* Убираем подчеркивание текста */
+    transition: background-color 0.3s; /* Плавный переход цвета фона */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); /* Тень */
+}
+
+.contact-button:hover {
+    background: linear-gradient(180deg, #434343, #202020); /* Фон сектора */
+    text-decoration: none; /* Убирает подчеркивание */
+    color:white;
+}
+
+.order-details-container {
+    border: None; /* Цвет рамки */
+    flex-direction: row; /* Горизонтальное размещение */
+    align-items: flex-end; /* Выравниваем элементы по нижнему краю */
+    margin-top: 0px; /* Перемещает контейнер вниз */
+    padding: 0px; /* Добавьте отступы для лучшего внешнего вида */
+
+    /*background-color: var(--color-green);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); /* Тень */
+}
+
+#label1 {
+    display: block; /* Заставляем метки занимать всю ширину */
+    margin-bottom: 5px; /* Отступ снизу */
+    font-weight: bold; /* Жирный шрифт */
+    color: white;
+}
+
+input:focus {
+    border: 3px solid var(--color-dark-orange); /* Цвет рамки */
+    outline: none; /* Убираем стандартный контур */
+}
+
+/* Корзина пуста */
+.empty-cart-message {
+    color: var(--color-red); /* Цвет текста */
+    font-weight: bold; /* Жирный шрифт */
+    font-size: 30px; /* Размер шрифта */
+    text-align: center; /* Выравнивание по центру */
+    margin: 10px 0; /* Отступы сверху и снизу */
+}
+
+/* Плавающая кнопка "В корзину"*/
+.to-cart {
+    position: fixed; /* Фиксированное положение */
+    bottom: 20px; /* Отступ от нижней части экрана */
+    left: 50%; /* Центрирование по горизонтали */
+    transform: translateX(-50%); /* Сдвиг влево на половину ширины кнопки */
+    padding: 10px 25px; /* Отступы внутри кнопки */
+    background: linear-gradient(180deg, #707070, #434343); /* Фон сектора */
+    /*background: radial-gradient(circle at center, #383838, #b1b1b1); /* Фон */
+    border: 3px solid var(--color-dark-green); /* Цвет рамки */
+    color: white; /* Цвет текста */
+    border-radius: 45px; /* Скругление углов */
+    cursor: pointer; /* Курсор в виде указателя */
+    display: none; /* Скрыть по умолчанию */
+}
+
+/* Эффект наведения для кнопки меню */
+.to-cart:hover {
+    color: white; /* Цвет текста ссылок */
+    background: radial-gradient(circle at center, var(--color-green), var(--color-dark-green) 70%); /* Фон сектора */
+    border: 3px solid var(--color-dark-green); /* Цвет рамки */
+    text-decoration: none; /* Убирает подчеркивание */
+    /*transform: translate(-50%, 0) scale(1.1); /* Центрирование и увеличение размера кнопки */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5), 0 0 20px rgba(0, 0, 0, 0.3); /* Тень для эффекта увеличения */
+}
+
+/* Эффект наведения для кнопки меню */
+.to-cart:focus {
+    border-color: none; /* Цвет рамки при фокусе */
+    outline: none; /* Убираем стандартный контур */
+}
+
+.show {
+    display: block; /* Показать при прокрутке */
+}
+
+.to-cart {
+    display: none; /* Скрываем кнопку по умолчанию */
+}
+
+.to-cart.show {
+    display: block; /* Показываем кнопку, когда добавлен класс show */
+}
+
+* {
+    box-sizing: border-box; /* Учитываем отступы и границы в ширине элементов */
+    margin: 0; /* Убираем отступы по умолчанию */
+    padding: 0; /* Убираем поля по умолчанию */
+}
+
+/* Перейти в корзину */
+.custom-button {
+    flex: None; /* Корзина занимает 50% высоты родительского контейнера */
+    padding: 15px 70px; /* Уменьшенные отступы внутри секции корзины */
+    margin-top: 30px; /* Отступ сверху */
+    width: 300px; /* Ширина*/
+    border-radius: 90px; /* Скругление углов корзины */
+    text-align: center; /* Центрируем текст в секции */
+    color:white;
+    font-weight: 700; /* Полужирный шрифт */
+    font-size: 30px; /* Размер шрифта */
+    text-align: center; /* Выравнивание по центру */
+    margin: 10px 10; /* Отступы сверху и снизу */    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3); /* Тень для секции */
+    margin-right: 100px; /* Отступ справа */
+    background: linear-gradient(180deg, #707070, #434343); /* Фон сектора */
+    border: 5px solid var(--color-dark-green); /* Цвет рамки */
+    /*background-color: var(--color-cart); /* Цвет секции */
+}
+
+.custom-button:hover {
+    color: white; /* Цвет текста ссылок */
+    background: radial-gradient(circle at center, var(--color-green), var(--color-dark-green) 70%); /* Фон сектора */
+    border: 5px solid var(--color-dark-green); /* Цвет рамки */
+    transform: scale(1.1); /*увеличенный размер кнопки*/
+}
+
+.custom-button:focus {
+    outline: none; /* Убираем стандартный контур */
+}
+
+/* Стили для модального окна */
+.modal-content {
+    background: linear-gradient(35deg, #a9a9a9, #747474); /* Фон сектора */
+    border-radius: 45px; /* Скругление углов модального окна */
+    box-shadow: 0 14px 18px rgba(0, 0, 0, 0.8); /* Тень для модального окна */
+}
+
+.modal-header {
+    border-bottom: 1px solid white; /* Подчеркивание заголовка */
+}
+
+.modal-title {
+    color: white; /* Цвет заголовка */
+    font-weight: bold; /* Жирный шрифт заголовка */
+    flex: 1; /* Логотип */
+    display: flex;
+    justify-content: center;
+    font-size: 2rem;
+}
+
+.modal-body {
+    padding: 20px; /* Отступы внутри модального окна */
+    font-family: Arial, sans-serif; /* Шрифт для текста */
+    color: #171717; /* Цвет текста */
+}
+
+.pickup-container {
+    margin: 0px; /* Убираем отступы по умолчанию */
+    padding: 0px; /* Убираем поля по умолчанию */}
+
+/*Надкипи Имя Телефон Выберите дату Выберите время*/
+.pickup-input label {
+    display: block; /* Отображение меток как блочных элементов */
+    margin-bottom: 3px; /* Отступ снизу для меток */
+    font-weight: bold; /* Жирный шрифт для меток */
+    color: rgb(43, 43, 43);
+    display: flex;
+    justify-content: center;
+}
+
+.pickup-input input,
+.pickup-input select {
+    width: 100%; /* Ширина полей ввода и выбора */
+    padding: 10px; /* Отступы внутри полей */
+    border: 1px solid #ccc; /* Граница полей */
+    border-radius: 45px; /* Скругление углов полей */
+}
+
+.cart-button {
+    color: white; /* Цвет текста кнопки */
+    padding: 10px 15px; /* Отступы внутри кнопки */
+    border: 3px solid var(--color-dark-green); /* Граница */
+    border-radius: 45px; /* Скругление углов кнопки */
+    cursor: pointer; /* Курсор при наведении */
+    transition: background-color 0.3s; /* Плавный переход цвета */
+}
+
+.cart-button:hover {
+    background: radial-gradient(circle at center, var(--color-green), var(--color-dark-green) 70%); /* Фон сектора */
+    border: 3px solid var(--color-dark-green); /* Убираем границу */
+}
+
+.cart-close-button {
+    background: linear-gradient(180deg, #707070, #434343); /* Фон сектора */
+    color: white; /* Цвет текста кнопки */
+    padding: 10px 15px; /* Отступы внутри кнопки */
+    border: 3px solid var(--color-dark-orange); /* Граница */
+    border-radius: 45px; /* Скругление углов кнопки */
+    cursor: pointer; /* Курсор при наведении */
+    transition: background-color 0.3s; /* Плавный переход цвета */
+}
+
+.cart-close-button:hover {
+    background: radial-gradient(circle at center, var(--color-orange), var(--color-dark-orange) 70%); /* Фон сектора */
+    color: white; /* Цвет текста кнопки */
+    padding: 10px 15px; /* Отступы внутри кнопки */
+    border: 3px solid var(--color-dark-orange); /* Граница */
+    border-radius: 45px; /* Скругление углов кнопки */
+    cursor: pointer; /* Курсор при наведении */
+    transition: background-color 0.3s; /* Плавный переход цвета */
+    transform: scale(1.1); /*увеличенный размер кнопки*/
+}
+
+.cart-close-button:focus {
+    border-color: none; /* Цвет рамки при фокусе */
+    outline: none; /* Убираем стандартный контур */
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+/* Дизайн полей даты и времени */
+.form-control {
+    height: 50px; /* Измените значение по вашему усмотрению */
+    font-size: 20px; /* Увеличиваем размер шрифта */
+    background-color: white;
+
+}
+
+/* Отзывы */
+.feedback-container {
+    background: linear-gradient(25deg, #a9a9a9, #747474); /* Фон сектора */
+    border-radius: 45px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+    padding: 20px;
+    width: 100%; /* Контейнер на всю ширину экрана */
+}
+
+h2 {
+    text-align: center;
+    color: #333;
+}
+
+#feedback-list {
+    display: flex; /* Используем flexbox для расположения элементов в ряд */
+    flex-wrap: wrap; /* Позволяем элементам переноситься на новую строку */
+    justify-content: space-between; /* Распределяем пространство между элементами */
+    margin-top: 20px;
+}
+
+.feedback-item {
+    background: linear-gradient(195deg, #a9a9a9, #747474); /* Фон сектора */
+    border: 1px solid var(--color-dark-orange);
+    border-radius: 45px;
+    padding: 15px;
+    margin: 10px; /* Отступ между элементами */
+    flex: 1 1 calc(30% - 20px); /* Задаем ширину элемента (30% от контейнера с учетом отступов) */
+    box-sizing: border-box; /* Учитываем отступы и границы в расчете ширины */
+}
+
+.feedback-item h3 {
+    margin: 0 0 10px;
+    color: #333;
+}
+
+.feedback-item p {
+    margin: 0;
+    color: #333;
+}
+
+@media (max-width: 1024px) {
+    /* Шапка */
+    header {
+        flex-direction: column; /* Переключаем на столбик */
+        height: auto; /* Автоматическая высота */
+        padding: 10px; /* Добавляем отступы */
+    }
+
+    /* Основной контейнер */
+    .main-container {
+        flex-direction: column; /* Элементы располагаются в столбик */
+        align-items: center; /* Центрируем содержимое */
+        margin-left: 20px; /* Уменьшаем отступы */
+        margin-right: 20px; /* Уменьшаем отступы */
+    }
+
+    /* Логотип */
+    .left-section img {
+        width: 100px; /* Уменьшаем размер логотипа */
+    }
+
+    /* Заголовки */
+    .middle-section h1 {
+        font-size: 2rem; /* Уменьшаем размер шрифта */
+    }
+
+    .middle-section h2 {
+        font-size: 1.5rem; /* Уменьшаем размер шрифта */
+    }
+
+    .middle-section h3 {
+        font-size: 1.2rem; /* Уменьшаем размер шрифта */
+    }
+
+    .right-section .address {
+        font-size: 1rem; /* Уменьшаем размер шрифта */
+    }
+
+    /* Навигация */
+    nav {
+        width: 100%; /* Ширина навигации 100% */
+        padding: 10px; /* Уменьшаем отступы внутри навигации */
+    }
+
+    .nav-container {
+        flex-direction: column; /* Элементы располагаются в столбик */
+        align-items: center; /* Центрируем элементы по горизонтали */
+    }
+
+    .nav-list {
+        margin-right: 0; /* Убираем отступы справа */
+        margin-bottom: 10px; /* Отступ между списками */
+    }
+
+    /* Корзина */
+    .cart-section {
+        width: 100%; /* Ширина корзины 100% */
+        margin-right: 0; /* Убираем отступ справа */
+        padding: 10px; /* Уменьшаем отступы */
+    }
+
+    .cart-section h2 {
+        font-size: 1.5em; /* Уменьшаем размер шрифта */
+    }
+
+    /* Кнопки в корзине */
+    .order-button,
+    .cart-button {
+        font-size: 16px; /* Уменьшаем размер шрифта */
+        padding: 10px; /* Уменьшаем отступы внутри кнопок */
+    }
+
+    .order-button:focus,
+    .cart-button:focus {
+        font-size: 16px; /* Уменьшаем размер шрифта */
+        padding: 10px; /* Уменьшаем отступы внутри кнопок */
+    }
+
+    /* Элементы в корзине */
+    .pickup-container,
+    .quantity-controls {
+        flex-direction: column; /* Элементы располагаются в столбик */
+        align-items: center; /* Центрируем элементы по горизонтали */
+        
+    }
+
+    /* Кнопки увеличения и уменьшения количества */
+    button.increase-button,
+    button.decrease-button {
+        margin: 5px 0; /* Отступы между кнопками */
+    }
+
+    /* Карточки пиццы */
+    .pizza-container {
+        display: flex; /* Используем флекс-контейнер */
+        flex-wrap: wrap; /* Позволяем элементам переноситься на новую строку */
+        justify-content: center; /* Центрируем элементы по контейнеру */
+    }
+
+    .pizza-item {
+        display: flex; /* Используем Flexbox */
+        flex-direction: column; /* Элементы располагаются вертикально */
+        justify-content: space-between; /* Распределяем пространство между элементами */
+        width: calc(45%); /* Ширина элемента 45% (2 карточки в строке) */
+        margin: 10px; /* Отступы между элементами */
+        align-items: center; /* Центрируем элементы по горизонтали */
+        text-align: center; /* Выравнивание текста по центру */
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); /* Тень для секции */
+        border-radius: 45px; /* Скругление углов */
+        padding: 10px; /* Отступы внутри */
+        font-size: 20px; /* Размер шрифта */
+        background: linear-gradient(180deg, #a9a9a9, #747474); /* Фон сектора */
+    }
+
+    /* Заголовки и описание пиццы */
+    .pizza-item h3 {
+        font-size: 1.5rem; /* Уменьшаем размер шрифта */
+    }
+
+    .pizza-item p {
+        font-size: 1rem; /* Уменьшаем размер шрифта */
+    }
+
+    /* Кнопка "Добавить в корзину" */
+    .order-button {
+        width: 100%; /* Ширина кнопки 100% */
+        font-size: 16px; /* Уменьшаем размер шрифта */
+    }
+
+    /* Кнопка "Контакт" */
+    .contact-button {
+        font-size: 16px; /* Уменьшаем размер шрифта */
+        padding: 10px; /* Уменьшаем отступы */
+    }
+
+    .custom-button {
+        width: 100%; /* Ширина кнопки на мобильных устройствах */
+        margin-right: 0px; /* Убираем отступ справа */
+        padding: 15px 20px; /* Уменьшаем отступы для мобильной версии */
+        font-size: 24px; /* Уменьшаем размер шрифта для мобильной версии */
+    }
+}
